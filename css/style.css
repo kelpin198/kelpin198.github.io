@@ -1,0 +1,77 @@
+.jumbotron {
+  padding-top: 5rem;
+  background-color: #e2edff;
+  height: 50vh;
+  position: relative;
+}
+
+.wave1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#projects {
+  background-color: #e2edff;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+/* Media Query ketika dibuka di mobile */
+@media (max-width: 576px) {
+  .btn-github {
+    width: 90%;
+  }
+
+  .navbar {
+    background-color: black !important;
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: #b269ff;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-content {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(224, 45, 72, 0.3);
+  border-left: 4px solid #a569ff;
+}
+
+.timeline-date {
+  font-weight: bold;
+  color: #b969ff;
+  margin-bottom: 5px;
+}
