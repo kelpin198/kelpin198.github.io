@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batik Nusantara | Warisan Budaya Indonesia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #A0522D;
+            --accent: #D2691E;
+            --light: #F5F5DC;
+            --dark: #3E2723;
+            --text: #5D4037;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-brand i {
+            font-size: 1.8rem;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #FFD700;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #FFD700;
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .navbar-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('img2/smk5.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+        }
+
+        .logo-slider {
+            position: relative;
+            overflow: hidden;
+            width: 250px; /* bisa disesuaikan */
+            height: 25px;
+  }
+
+  .logo-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .8s ease-in-out;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .logo-slide.active {
+    opacity: 1;
+  }
+
+        .logo-slide.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        /* Sejarah Section */
+        .sejarah-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .sejarah-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .sejarah-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: var(--primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 30px;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -40px;
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .timeline-text {
+            margin-bottom: 10px;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(139, 69, 19, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #2c1810 100%);
+            color: white;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .creator-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .creator-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .creator-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .creator-info p {
+            margin-bottom: 0;
+            color: #ccc;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .navbar-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-nav.active {
+                display: flex;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .sejarah-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 70px;
+                margin-right: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -50px;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 20px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <i class=""></i>
+                 <img src="img2/logosmk5.jpeg"  alt="Profil" class="profile-img"></i>
+                Batik Nusantara
+            </a>
+            
+            <ul class="navbar-nav">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">Tentang</a></li>
+                <li><a href="#sejarah" class="nav-link">Sejarah</a></li>
+                <li><a href="#gallery" class="nav-link">Galeri</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+                <li><a href="index.html" class="nav-link">Kembali</a></li>
+            </ul>
+            
+            <div class="navbar-profile">
+                <img src="img2/kepin.jpeg" alt="Profil" class="profile-img">
+                <span>Kelvin</span>
+            </div>
+            
+            <button class="navbar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-title">
+                <div class="logo-slider">
+                    <div class="logo-slide active"></div>
+                    <div class="logo-slide">SMK NEGERI 5 MALANG</div>
+                    <div class="logo-slide"></div>
+                </div>
+            </div>
+            <h1>Warisan Budaya Batik Nusantara</h1>
+            <p>Jelajahi keindahan dan makna filosofis di balik setiap motif batik tradisional Indonesia yang penuh dengan cerita dan sejarah.</p>
+            <a href="#sejarah" class="hero-btn">Pelajari Sejarah</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-title">
+            <h2>Tentang Batik Nusantara</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="img2/proses membatik.jpg" alt="Proses Membatik">
+            </div>
+            <div class="about-text">
+                <h3>Keunikan Batik Indonesia</h3>
+                <p>Batik adalah warisan budaya Indonesia yang telah diakui UNESCO sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi. Setiap daerah di Indonesia memiliki ciri khas motif batik yang berbeda, mencerminkan kekayaan budaya nusantara.</p>
+                <p>Kami menghadirkan koleksi batik terbaik dari berbagai daerah di Indonesia, dengan kualitas terjamin dan motif autentik yang dibuat oleh pengrajin batik berpengalaman.</p>
+                <p>Dengan membeli batik dari kami, Anda turut melestarikan warisan budaya Indonesia dan mendukung para pengrajin batik lokal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sejarah Section -->
+    <section id="sejarah" class="section">
+        <div class="section-title">
+            <h2>Sejarah Batik Indonesia</h2>
+        </div>
+        <div class="sejarah-container">
+            <div class="sejarah-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Abad ke-17</div>
+                        <h3 class="timeline-title">Asal Usul Batik</h3>
+                        <p class="timeline-text">Batik pertama kali dikenal di Indonesia pada masa Kerajaan Majapahit. Awalnya, batik hanya dibuat untuk kalangan keraton dan dikerjakan oleh para putri raja serta pembantu-pembantunya.</p>
+                        <p class="timeline-text">Kata "batik" berasal dari gabungan dua kata bahasa Jawa: "amba" yang berarti menulis dan "titik" yang berarti titik.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Abad ke-18</div>
+                        <h3 class="timeline-title">Penyebaran ke Masyarakat Luas</h3>
+                        <p class="timeline-text">Seiring waktu, seni batik mulai menyebar ke luar tembok keraton dan dipelajari oleh rakyat biasa. Batik menjadi semakin populer dan berkembang pesat, terutama di Jawa.</p>
+                        <p class="timeline-text">Pada masa ini, batik mulai diproduksi secara massal dengan teknik cap untuk memenuhi permintaan pasar yang semakin meningkat.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Abad ke-19</div>
+                        <h3 class="timeline-title">Batik Go Internasional</h3>
+                        <p class="timeline-text">Batik mulai dikenal di pasar internasional setelah diperkenalkan oleh para pedagang Belanda. Batik Indonesia mulai diekspor ke berbagai negara di Eropa.</p>
+                        <p class="timeline-text">Pada masa ini, teknik pembuatan batik juga semakin berkembang dengan penemuan canting tembaga yang mempermudah proses pembuatan.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2 Oktober 2009</div>
+                        <h3 class="timeline-title">Pengakuan UNESCO</h3>
+                        <p class="timeline-text">Batik Indonesia diakui oleh UNESCO sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi (Masterpieces of the Oral and Intangible Heritage of Humanity).</p>
+                        <p class="timeline-text">Sejak saat itu, tanggal 2 Oktober ditetapkan sebagai Hari Batik Nasional yang diperingati setiap tahunnya.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Era Modern</div>
+                        <h3 class="timeline-title">Batik di Masa Kini</h3>
+                        <p class="timeline-text">Batik terus berkembang dengan mengadopsi motif dan teknik modern tanpa meninggalkan nilai-nilai tradisional. Batik tidak hanya digunakan untuk acara formal, tetapi juga untuk fashion sehari-hari.</p>
+                        <p class="timeline-text">Desainer muda Indonesia terus berinovasi dengan batik, menciptakan karya-karya yang memadukan tradisi dan modernitas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="section-title">
+            <h2>Galeri Batik</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="img2/kepin2.png" alt="Batik 1">
+                <div class="gallery-overlay">
+                    <h3>Batik Parang</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img2/kepin3.png" alt="Batik 2">
+                <div class="gallery-overlay">
+                    <h3>Batik Kawung</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img2/kepin4.png" alt="Batik 3">
+                <div class="gallery-overlay">
+                    <h3>Batik Megamendung</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img2/kepin5.png" alt="Batik 4">
+                <div class="gallery-overlay">
+                    <h3>Batik Sekar Jagad</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img2/kepin6.png" alt="Batik 5">
+                <div class="gallery-overlay">
+                    <h3>Batik Truntum</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img2/kepin7.png" alt="Batik 6">
+                <div class="gallery-overlay">
+                    <h3>Batik Sidomukti</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Hubungi Kami</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informasi Kontak</h3>
+                <div class="contact-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Alamat</h4>
+                        <p> Jl. Ikan Piranha Atas, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Telepon</h4>
+                        <p>Telp.(0341)478195</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@smkn5malang.sch.id</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Jam Operasional</h4>
+                        <p>Senin - Jumat: 07.00 - 17.00 WIB</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Kirim Pesan</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Masukkan alamat email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subjek</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Masukkan subjek pesan">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" class="form-control" placeholder="Tulis pesan Anda di sini"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Tentang Batik Nusantara</h3>
+                <p>Kami adalah platform yang berdedikasi untuk melestarikan dan mempromosikan warisan budaya batik Indonesia. Dengan koleksi batik terbaik dari berbagai daerah, kami ingin memperkenalkan keindahan batik kepada dunia.</p>
+                <div class="creator-profile">
+                    <img src="img2/kepin1.jpeg" alt="Kelvin smiling in front of a neutral background, wearing a batik shirt, conveying a friendly and passionate atmosphere about Indonesian batik culture" class="creator-img">
+                    <div class="creator-info">
+                        <h4>Kelvin</h4>
+                        <p>Web Developer & Batik Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Tautan Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                    <li><a href="#sejarah"><i class="fas fa-history"></i> Sejarah</a></li>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> Galeri</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Ikuti Kami</h3>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>Jalan Ikan Piranha Atas 65142 Telp.(0341)478195,Fax(0341)477087,E-mail : info@smkn5malang.sch.id
+                    http://www.smkn5malang.sch.id Malang 65142</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Batik Nusantara. All Rights Reserved. | Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i> oleh Kelvin Alfattama dan Baihaqqi</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navbar on mobile
+        document.querySelector('.navbar-toggle').addEventListener('click', function() {
+            document.querySelector('.navbar-nav').classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.navbar-nav').classList.remove('active');
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
