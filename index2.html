@@ -5,680 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batik Nusantara | Warisan Budaya Indonesia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #8B4513;
-            --secondary: #A0522D;
-            --accent: #D2691E;
-            --light: #F5F5DC;
-            --dark: #3E2723;
-            --text: #5D4037;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--light);
-            overflow-x: hidden;
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 15px 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .navbar-brand i {
-            font-size: 1.8rem;
-        }
-
-        .navbar-nav {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 20px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #FFD700;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: #FFD700;
-            transition: var(--transition);
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 80%;
-        }
-
-        .navbar-profile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            font-weight: 500;
-        }
-
-        .profile-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid white;
-        }
-
-        .navbar-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('img2/smk5.jpeg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 150px 20px;
-            position: relative;
-        }
-
-        .logo-slider {
-            position: relative;
-            overflow: hidden;
-            width: 250px; /* bisa disesuaikan */
-            height: 25px;
-  }
-
-  .logo-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity .8s ease-in-out;
-    font-weight: bold;
-    font-size: 18px;
-  }
-
-  .logo-slide.active {
-    opacity: 1;
-  }
-
-        .logo-slide.active {
-            opacity: 1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            display: inline-block;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--accent);
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-        }
-
-        /* Sejarah Section */
-        .sejarah-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .sejarah-timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .sejarah-timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background-color: var(--primary);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            flex: 1;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 30px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 30px;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary);
-            border-radius: 50%;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -40px;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -40px;
-        }
-
-        .timeline-year {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .timeline-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .timeline-text {
-            margin-bottom: 10px;
-        }
-
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(139, 69, 19, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-overlay h3 {
-            color: white;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .contact-detail i {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Footer Styles */
-        .footer {
-            background: linear-gradient(135deg, var(--dark) 0%, #2c1810 100%);
-            color: white;
-            padding: 60px 20px 30px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-col p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .footer-links a i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-
-        .creator-profile {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .creator-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent);
-        }
-
-        .creator-info h4 {
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .creator-info p {
-            margin-bottom: 0;
-            color: #ccc;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .navbar-nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .navbar-nav.active {
-                display: flex;
-            }
-
-            .navbar-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .sejarah-timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                flex-direction: row !important;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                margin-left: 70px;
-                margin-right: 0;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-content::before,
-            .timeline-item:nth-child(even) .timeline-content::before {
-                left: -50px;
-                right: auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 100px 20px;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .about-content, .contact-container {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -686,7 +12,7 @@
         <div class="navbar-container">
             <a href="#" class="navbar-brand">
                 <i class=""></i>
-                 <img src="img2/logosmk5.jpeg"  alt="Profil" class="profile-img"></i>
+                 <img src="img1/logosmk5.jpeg"  alt="Profil" class="profile-img"></i>
                 Batik Nusantara
             </a>
             
@@ -700,7 +26,7 @@
             </ul>
             
             <div class="navbar-profile">
-                <img src="img2/kepin.jpeg" alt="Profil" class="profile-img">
+                <img src="img1/kepin.jpeg" alt="Profil" class="profile-img">
                 <span>Kelvin</span>
             </div>
             
@@ -733,7 +59,7 @@
         </div>
         <div class="about-content">
             <div class="about-img">
-                <img src="img2/proses membatik.jpg" alt="Proses Membatik">
+                <img src="img1/proses membatik.jpg" alt="Proses Membatik">
             </div>
             <div class="about-text">
                 <h3>Keunikan Batik Indonesia</h3>
@@ -806,37 +132,37 @@
         </div>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="img2/kepin2.png" alt="Batik 1">
+                <img src="img1/kepin2.png" alt="Batik 1">
                 <div class="gallery-overlay">
                     <h3>Batik Parang</h3>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="img2/kepin3.png" alt="Batik 2">
+                <img src="img1/kepin3.png" alt="Batik 2">
                 <div class="gallery-overlay">
                     <h3>Batik Kawung</h3>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="img2/kepin4.png" alt="Batik 3">
+                <img src="img1/kepin4.png" alt="Batik 3">
                 <div class="gallery-overlay">
                     <h3>Batik Megamendung</h3>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="img2/kepin5.png" alt="Batik 4">
+                <img src="img1/kepin5.png" alt="Batik 4">
                 <div class="gallery-overlay">
                     <h3>Batik Sekar Jagad</h3>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="img2/kepin6.png" alt="Batik 5">
+                <img src="img1/kepin6.png" alt="Batik 5">
                 <div class="gallery-overlay">
                     <h3>Batik Truntum</h3>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="img2/kepin7.png" alt="Batik 6">
+                <img src="img1/kepin7.png" alt="Batik 6">
                 <div class="gallery-overlay">
                     <h3>Batik Sidomukti</h3>
                 </div>
@@ -913,7 +239,7 @@
                 <h3>Tentang Batik Nusantara</h3>
                 <p>Kami adalah platform yang berdedikasi untuk melestarikan dan mempromosikan warisan budaya batik Indonesia. Dengan koleksi batik terbaik dari berbagai daerah, kami ingin memperkenalkan keindahan batik kepada dunia.</p>
                 <div class="creator-profile">
-                    <img src="img2/kepin1.jpeg" alt="Kelvin smiling in front of a neutral background, wearing a batik shirt, conveying a friendly and passionate atmosphere about Indonesian batik culture" class="creator-img">
+                    <img src="img1/kepin1.jpeg" alt="Kelvin smiling in front of a neutral background, wearing a batik shirt, conveying a friendly and passionate atmosphere about Indonesian batik culture" class="creator-img">
                     <div class="creator-info">
                         <h4>Kelvin</h4>
                         <p>Web Developer & Batik Enthusiast</p>
