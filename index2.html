@@ -1,329 +1,832 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batik Nusantara | Warisan Budaya Indonesia</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="navbar-brand">
-                <i class=""></i>
-                 <img src="img1/logosmk5.jpeg"  alt="Profil" class="profile-img"></i>
-                Batik Nusantara
-            </a>
-            
-            <ul class="navbar-nav">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">Tentang</a></li>
-                <li><a href="#sejarah" class="nav-link">Sejarah</a></li>
-                <li><a href="#gallery" class="nav-link">Galeri</a></li>
-                <li><a href="#contact" class="nav-link">Kontak</a></li>
-                <li><a href="index.html" class="nav-link">Kembali</a></li>
-            </ul>
-            
-            <div class="navbar-profile">
-                <img src="img1/kepin.jpeg" alt="Profil" class="profile-img">
-                <span>Kelvin</span>
-            </div>
-            
-            <button class="navbar-toggle">
-                <i class="fas fa-bars"></i>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>SMKN 5 MALANG | Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+  </head>
+  <body>
+    <!-- Header Profesional -->
+    <header class="main-header">
+      <div class="header-container">
+        <div class="logo-section">
+          <div class="school-logo">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="school-name">
+            <h1>SMKN 5 MALANG</h1>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <a
+            href="index.html"
+            class="nav-item active"
+            >Home</a
+          >
+          <a
+            href="dkv.html"
+            class="nav-item"
+            >DKV</a
+          >
+          <a
+            href="tkj.html"
+            class="nav-item"
+            >TKJ</a
+          >
+          <a
+            href="rpl.html"
+            class="nav-item"
+            >RPL</a
+          >
+        </nav>
+
+        <div class="header-right">
+          <div class="datetime-section">
+            <div class="day-name">SENIN,</div>
+            <div class="date-info">1 Juni 2026</div>
+          </div>
+          <button
+            class="search-btn"
+            id="searchToggleBtn"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div
+      class="search-overlay hidden"
+      id="searchOverlay"
+      aria-hidden="true"
+    >
+      <div
+        class="search-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="searchPanelTitle"
+      >
+        <div class="search-panel-header">
+          <h2 id="searchPanelTitle">Pencarian</h2>
+          <button
+            class="close-search-btn"
+            id="closeSearchBtn"
+            aria-label="Tutup pencarian"
+          >
+            ×
+          </button>
+        </div>
+        <div class="search-panel-body">
+          <div class="search-input-group">
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="Cari jurusan, profil, informasi..."
+              aria-label="Cari"
+            />
+            <button
+              class="search-submit-btn"
+              id="searchSubmitBtn"
+            >
+              Cari
             </button>
+          </div>
+          <div
+            class="search-results"
+            id="searchResults"
+            aria-live="polite"
+          ></div>
         </div>
-    </nav>
+      </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-title">
-                <div class="logo-slider">
-                    <div class="logo-slide active"></div>
-                    <div class="logo-slide">SMK NEGERI 5 MALANG</div>
-                    <div class="logo-slide"></div>
-                </div>
-            </div>
-            <h1>Warisan Budaya Batik Nusantara</h1>
-            <p>Jelajahi keindahan dan makna filosofis di balik setiap motif batik tradisional Indonesia yang penuh dengan cerita dan sejarah.</p>
-            <a href="#sejarah" class="hero-btn">Pelajari Sejarah</a>
-        </div>
-    </section>
+    <!-- Hero Section dengan Carousel Jurusan -->
+    <section class="hero-section">
+      <div class="carousel-container">
+        <button
+          class="carousel-btn prev"
+          onclick="moveSlide(-1)"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="section-title">
-            <h2>Tentang Batik Nusantara</h2>
-        </div>
-        <div class="about-content">
-            <div class="about-img">
-                <img src="img1/proses membatik.jpg" alt="Proses Membatik">
+        <div class="carousel-wrapper">
+          <div
+            class="carousel-track"
+            id="carouselTrack"
+          >
+            <!-- Slide 5 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image kriya-kayu-bg">
+                  <img
+                    src="assets/karya/karya kayu.jpg"
+                    alt="Foto Kriya Kayu"
+                  />
+                </div>
+                <h3>Kriya Kayu</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">Pak Purnomo</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa Kayu 1,2:</span>
+                    <span class="detail-value">66</span>
+                  </div>
+                </div>
+                <a
+                  href="kriya-kayu.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
             </div>
-            <div class="about-text">
-                <h3>Keunikan Batik Indonesia</h3>
-                <p>Batik adalah warisan budaya Indonesia yang telah diakui UNESCO sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi. Setiap daerah di Indonesia memiliki ciri khas motif batik yang berbeda, mencerminkan kekayaan budaya nusantara.</p>
-                <p>Kami menghadirkan koleksi batik terbaik dari berbagai daerah di Indonesia, dengan kualitas terjamin dan motif autentik yang dibuat oleh pengrajin batik berpengalaman.</p>
-                <p>Dengan membeli batik dari kami, Anda turut melestarikan warisan budaya Indonesia dan mendukung para pengrajin batik lokal.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Sejarah Section -->
-    <section id="sejarah" class="section">
-        <div class="section-title">
-            <h2>Sejarah Batik Indonesia</h2>
-        </div>
-        <div class="sejarah-container">
-            <div class="sejarah-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">Abad ke-17</div>
-                        <h3 class="timeline-title">Asal Usul Batik</h3>
-                        <p class="timeline-text">Batik pertama kali dikenal di Indonesia pada masa Kerajaan Majapahit. Awalnya, batik hanya dibuat untuk kalangan keraton dan dikerjakan oleh para putri raja serta pembantu-pembantunya.</p>
-                        <p class="timeline-text">Kata "batik" berasal dari gabungan dua kata bahasa Jawa: "amba" yang berarti menulis dan "titik" yang berarti titik.</p>
-                    </div>
+            <!-- Slide 6 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image kriya-keramik-bg">
+                  <img
+                    src="assets/karya/karya-keramik.jpg"
+                    alt="Foto Kriya Keramik"
+                  />
                 </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">Abad ke-18</div>
-                        <h3 class="timeline-title">Penyebaran ke Masyarakat Luas</h3>
-                        <p class="timeline-text">Seiring waktu, seni batik mulai menyebar ke luar tembok keraton dan dipelajari oleh rakyat biasa. Batik menjadi semakin populer dan berkembang pesat, terutama di Jawa.</p>
-                        <p class="timeline-text">Pada masa ini, batik mulai diproduksi secara massal dengan teknik cap untuk memenuhi permintaan pasar yang semakin meningkat.</p>
-                    </div>
+                <h3>Kriya Keramik</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">Pak Icuk</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa Keramik 1,2:</span>
+                    <span class="detail-value">64</span>
+                  </div>
                 </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">Abad ke-19</div>
-                        <h3 class="timeline-title">Batik Go Internasional</h3>
-                        <p class="timeline-text">Batik mulai dikenal di pasar internasional setelah diperkenalkan oleh para pedagang Belanda. Batik Indonesia mulai diekspor ke berbagai negara di Eropa.</p>
-                        <p class="timeline-text">Pada masa ini, teknik pembuatan batik juga semakin berkembang dengan penemuan canting tembaga yang mempermudah proses pembuatan.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2 Oktober 2009</div>
-                        <h3 class="timeline-title">Pengakuan UNESCO</h3>
-                        <p class="timeline-text">Batik Indonesia diakui oleh UNESCO sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi (Masterpieces of the Oral and Intangible Heritage of Humanity).</p>
-                        <p class="timeline-text">Sejak saat itu, tanggal 2 Oktober ditetapkan sebagai Hari Batik Nasional yang diperingati setiap tahunnya.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">Era Modern</div>
-                        <h3 class="timeline-title">Batik di Masa Kini</h3>
-                        <p class="timeline-text">Batik terus berkembang dengan mengadopsi motif dan teknik modern tanpa meninggalkan nilai-nilai tradisional. Batik tidak hanya digunakan untuk acara formal, tetapi juga untuk fashion sehari-hari.</p>
-                        <p class="timeline-text">Desainer muda Indonesia terus berinovasi dengan batik, menciptakan karya-karya yang memadukan tradisi dan modernitas.</p>
-                    </div>
-                </div>
+                <a
+                  href="kriya-keramik.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="section">
-        <div class="section-title">
-            <h2>Galeri Batik</h2>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="img1/kepin2.png" alt="Batik 1">
-                <div class="gallery-overlay">
-                    <h3>Batik Parang</h3>
+            <!-- Slide 7 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image kriya-tekstil-bg">
+                  <img
+                    src="assets/karya/karya tekstil.png"
+                    alt="Foto Kriya Tekstil"
+                  />
                 </div>
-            </div>
-            <div class="gallery-item">
-                <img src="img1/kepin3.png" alt="Batik 2">
-                <div class="gallery-overlay">
-                    <h3>Batik Kawung</h3>
+                <h3>Kriya Tekstil</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">""</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa Tekstil 1,2:</span>
+                    <span class="detail-value">56</span>
+                  </div>
                 </div>
+                <a
+                  href="kriya-tekstil.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
             </div>
-            <div class="gallery-item">
-                <img src="img1/kepin4.png" alt="Batik 3">
-                <div class="gallery-overlay">
-                    <h3>Batik Megamendung</h3>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="img1/kepin5.png" alt="Batik 4">
-                <div class="gallery-overlay">
-                    <h3>Batik Sekar Jagad</h3>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="img1/kepin6.png" alt="Batik 5">
-                <div class="gallery-overlay">
-                    <h3>Batik Truntum</h3>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="img1/kepin7.png" alt="Batik 6">
-                <div class="gallery-overlay">
-                    <h3>Batik Sidomukti</h3>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="section-title">
-            <h2>Hubungi Kami</h2>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Informasi Kontak</h3>
-                <div class="contact-detail">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Alamat</h4>
-                        <p> Jl. Ikan Piranha Atas, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142</p>
-                    </div>
+            <!-- Slide 8 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image tata-busana-bg">
+                  <img
+                    src="assets/karya/karya tb.jpg"
+                    alt="Foto Tata Busana"
+                  />
                 </div>
-                <div class="contact-detail">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h4>Telepon</h4>
-                        <p>Telp.(0341)478195</p>
-                    </div>
+                <h3>Tata Busana</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">Bu Ellysa</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa Tata Busana 1,2:</span>
+                    <span class="detail-value">60</span>
+                  </div>
                 </div>
-                <div class="contact-detail">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>info@smkn5malang.sch.id</p>
-                    </div>
-                </div>
-                <div class="contact-detail">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h4>Jam Operasional</h4>
-                        <p>Senin - Jumat: 07.00 - 17.00 WIB</p>
-                    </div>
-                </div>
+                <a
+                  href="tata-busana.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
             </div>
-            <div class="contact-form">
-                <h3>Kirim Pesan</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Nama Lengkap</label>
-                        <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="Masukkan alamat email">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subjek</label>
-                        <input type="text" id="subject" class="form-control" placeholder="Masukkan subjek pesan">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Pesan</label>
-                        <textarea id="message" class="form-control" placeholder="Tulis pesan Anda di sini"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Kirim Pesan</button>
-                </form>
+
+            <!-- Slide 1 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image animasi-bg">
+                  <img
+                    src="assets/karya/karya animasi.png"
+                    alt="Foto Animasi"
+                  />
+                </div>
+                <h3>Animasi</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">Bu Arie</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa Animasi 1,2:</span>
+                    <span class="detail-value">54</span>
+                  </div>
+                </div>
+                <a
+                  href="animasi.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
             </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image dkv-bg">
+                  <img
+                    src="assets/karya/karya-dkv.png"
+                    alt="Foto DKV"
+                  />
+                </div>
+                <h3>DKV</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">Pak Riza</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa DKV 1,2,3:</span>
+                    <span class="detail-value">93</span>
+                  </div>
+                </div>
+                <a
+                  href="dkv.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image tkj-bg">
+                  <img
+                    src="assets/karya/karya tkj 1.jpg"
+                    alt="Foto TKJ"
+                  />
+                </div>
+                <h3>TKJ</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">BU INA</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa TKJ 1,2,3:</span>
+                    <span class="detail-value">90</span>
+                  </div>
+                </div>
+                <a
+                  href="tkj.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+              <div class="jurusan-card">
+                <div class="card-image rpl-bg">
+                  <img
+                    src="assets/karya/karya rpl.png"
+                    alt="Foto RPL"
+                  />
+                </div>
+                <h3>RPL</h3>
+                <div class="jurusan-details">
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Kepala Jurusan:</span>
+                    <span class="detail-value">Pak Alwan</span>
+                  </div>
+                  <div class="jurusan-detail">
+                    <span class="detail-title">Jumlah Siswa RPL 1,2,3:</span>
+                    <span class="detail-value">87x</span>
+                  </div>
+                </div>
+                <a
+                  href="rpl.html"
+                  class="detail-btn"
+                  >Lihat Detail</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
+
+        <button
+          class="carousel-btn next"
+          onclick="moveSlide(1)"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
     </section>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Agenda Section -->
+        <!-- Sejarah Sekolah -->
+        <section class="school-history">
+          <h2><i class="fas fa-history"></i> Sejarah Singkat Sekolah</h2>
+          <p>
+            SMK Negeri 5 Malang berdiri pada tahun 1998 di atas tanah seluas 13.816 m² dengan luas bangunan 33.433 m² terletak di lokasi strategis dalam wilayah kota Malang. Menggunakan Competency Based Training(CBT) dan Production Based
+            Training(PBT), diharapkan setelah mengikuti pendidikan dan pelatihan di SMK Negeri 5 Malang, lulusan dapat mengimplementasi-kan keahlian secara produktif sesuai kompetensi yang dimiliki.
+          </p>
+        </section>
+
+        <section class="agenda-section">
+          <div class="section-left">
+            <div class="promotional-banner winner-gallery">
+              <div class="banner-overlay"></div>
+              <div class="banner-content">
+                <h2>Foto Siswa Juara Lomba</h2>
+                <p>Prestasi terbaik dari siswa SMKN 5 Malang di berbagai kompetisi.</p>
+                <div class="winner-grid">
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/kriya-kayu-1.svg"
+                      alt="Juara Kriya Kayu"
+                    />
+                  </div>
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/piala keramik.jpg"
+                      alt="Juara Kriya Keramik"
+                    />
+                  </div>
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/piala tekstil.jpg"
+                      alt="Juara Kriya Tekstil"
+                    />
+                  </div>
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/piala tb.jpg"
+                      alt="Juara Tata Busana"
+                    />
+                  </div>
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/piala animasi.jpg"
+                      alt="Juara Animasi"
+                    />
+                  </div>
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/dkv-1.svg"
+                      alt="Juara DKV"
+                    />
+                  </div>
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/tkj-1.svg"
+                      alt="Juara TKJ"
+                    />
+                  </div>
+                  <div class="winner-card">
+                    <img
+                      src="assets/kejuaraan/rpl-1.svg"
+                      alt="Juara RPL"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-showcase">
+          <div class="stat-box">
+            <i class="fas fa-user-graduate"></i>
+            <h3>1.280+</h3>
+            <p>Siswa Aktif</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-chalkboard-user"></i>
+            <h3>86</h3>
+            <p>Guru Profesional</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-trophy"></i>
+            <h3>50+</h3>
+            <p>Penghargaan Nasional</p>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-building"></i>
+            <h3>8</h3>
+            <p>Jurusan Unggulan</p>
+          </div>
+        </section>
+
+        <!-- Vision & Mission -->
+        <section class="vision-mission">
+          <div class="vm-card">
+            <i class="fas fa-eye"></i>
+            <h3>Visi Sekolah</h3>
+            <p>Sekolah unggul berbasis seni, teknologi, dan imtaq.</p>
+          </div>
+          <div class="vm-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Misi Sekolah</h3>
+            <ul>
+              <li>Melaksanakan kegiatan pembelajaran yang menghasilkan lulusan dengan kompetensi yang sesuai Standar Nasional Pendidikan (8 SNP) dan standar industri (prinsip link and match 8+i)</li>
+              <li>Meningkatkan sarana dan prasarana pendidikan untuk mendukung proses pembelajaran yang optimal sesuai standar DUDIKA</li>
+              <li>Menciptakan lingkungan dan atmosfer akademik yang mampu membentuk lulusan dengan etos kerja dan kecakapan hidup serta berdaya saing di bidang seni dan teknologi</li>
+              <li>Mewujudkan lingkungan sekolah yang bernuansa seni dan menguasai teknologi sebagai ciri khas sekolah</li>
+              <li>Mengaktualisasikan ajaran agama dalam setiap sendi kehidupan sekolah.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- School Goals -->
+        <section class="vision-mission goals-section">
+          <div class="vm-card full-width">
+            <i class="fas fa-bullseye"></i>
+            <h3>Tujuan Sekolah</h3>
+            <ul>
+              <li>Sekolah mendapatkan nilai akreditasi dan Rapor MUTU Sekolah berpredikat Baik</li>
+              <li>Memberikan pelayanan prima dengan komitmen, kompeten, adaptif dan kolaboratif</li>
+              <li>Mewujudkan sinkronisasi kurikulum sesuai kebutuhan kompetensi yang ada di DUDIKA</li>
+              <li>Menciptakan kelas industri dan Teaching Factory pada setiap program keahlian yang ada di sekolah</li>
+              <li>Meningkatkan jumlah siswa yang mendapatkan sertifikat Kompetensi</li>
+              <li>Membentuk insan berbudi pekerti luhur yang sesuai dengan profil pelajar Pancasila</li>
+              <li>Membudayakan 5S (Senyum, Sapa, Salim, Sopan, dan Santun)</li>
+              <li>Mengoptimalkan penggunaan sarana dan prasarana untuk proses pembelajaran</li>
+              <li>Melakukan program perawatan dan perbaikan sarana dan prasarana secara berkala</li>
+              <li>Menciptakan branding sekolah</li>
+              <li>Menyiapkan sarana dan prasarana yang memadai untuk proses kegiatan belajar mengajar sesuai dengan standar DUDIKA dan perkembangan</li>
+              <li>Inventarisasi dan revitalisasi sarana dan prasarana pendidikan untuk proses kegiatan belajar mengajar yang sesuai dengan standar DUDIKA secara berkelanjutan</li>
+              <li>Membuat database penelusuran alumni yang bekerja, wirausaha atau melanjutkan studi (Tracing Study)</li>
+              <li>Mengadakan Job Fair dan entrepreneurship secara berkala</li>
+              <li>Mewujudkan program Sertifikasi Kompetensi Guru Produktif melalui LSP-P3</li>
+              <li>Melaksanakan kunjungan industri secara berkala</li>
+              <li>Menciptakan budaya literasi untuk seluruh civitas akademi</li>
+              <li>Mengadakan program Guru Tamu secara rutin</li>
+              <li>Mewujudkan program magang guru pada DUDIKA</li>
+              <li>Menciptakan produk hasil pembelajaran yang bercirikan kekhasan seni & teknologi</li>
+              <li>Menjadi sekolah rujukan untuk pelatihan seni & teknologi</li>
+              <li>Pemanfaatan teknologi untuk mengintegrasikan semua sistem di sekolah</li>
+              <li>Membentuk jiwa Entrepreneur dengan menerapkan pembelajaran Project Based Learning</li>
+              <li>Santunan kepada fakir, miskin dan anak-anak yatim</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Tentang Batik Nusantara</h3>
-                <p>Kami adalah platform yang berdedikasi untuk melestarikan dan mempromosikan warisan budaya batik Indonesia. Dengan koleksi batik terbaik dari berbagai daerah, kami ingin memperkenalkan keindahan batik kepada dunia.</p>
-                <div class="creator-profile">
-                    <img src="img1/kepin1.jpeg" alt="Kelvin smiling in front of a neutral background, wearing a batik shirt, conveying a friendly and passionate atmosphere about Indonesian batik culture" class="creator-img">
-                    <div class="creator-info">
-                        <h4>Kelvin</h4>
-                        <p>Web Developer & Batik Enthusiast</p>
-                    </div>
-                </div>
+    <footer class="main-footer">
+      <div class="footer-inner container">
+        <div class="footer-col contact-col">
+          <div class="footer-brand">
+            <div class="school-logo small">
+              <i class="fas fa-graduation-cap"></i>
             </div>
-            <div class="footer-col">
-                <h3>Tautan Cepat</h3>
-                <ul class="footer-links">
-                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#about"><i class="fas fa-info-circle"></i> Tentang</a></li>
-                    <li><a href="#sejarah"><i class="fas fa-history"></i> Sejarah</a></li>
-                    <li><a href="#gallery"><i class="fas fa-images"></i> Galeri</a></li>
-                    <li><a href="#contact"><i class="fas fa-envelope"></i> Kontak</a></li>
-                </ul>
+            <div class="footer-title">
+              <h2>SMKN 5 MALANG</h2>
+              <p class="muted">Cerdas - Terampil - Kompetitif</p>
             </div>
-            <div class="footer-col">
-                <h3>Ikuti Kami</h3>
-                
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                </div>
-                <p>Jalan Ikan Piranha Atas 65142 Telp.(0341)478195,Fax(0341)477087,E-mail : info@smkn5malang.sch.id
-                    http://www.smkn5malang.sch.id Malang 65142</p>
-            </div>
+          </div>
+
+          <address class="footer-address"><strong>Alamat:</strong> Jl. Ikan Piranha Atas, Tunjungsekar, Lowokwaru, Kota Malang, Jawa Timur 65142</address>
+          <p class="footer-line"><strong>Email:</strong> <a href="mailto:info@smkn5malang.sch.id">info@smkn5malang.sch.id</a></p>
+          <p class="footer-line"><strong>Telepon:</strong> 0341-478195</p>
+
+          <div class="footer-social">
+            <a
+              href="#"
+              aria-label="facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="youtube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Batik Nusantara. All Rights Reserved. | Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i> oleh Kelvin Alfattama dan Baihaqqi</p>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p>© <span class="school-name-green">SMKN 5 MALANG</span>, All right reserved.</p>
         </div>
+      </div>
     </footer>
 
     <script>
-        // Toggle navbar on mobile
-        document.querySelector('.navbar-toggle').addEventListener('click', function() {
-            document.querySelector('.navbar-nav').classList.toggle('active');
-        });
+      // Carousel with autoplay and pause-on-hover
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-slide');
+      const track = document.getElementById('carouselTrack');
+      let slidesToShow = 4;
+      const AUTO_PLAY_DELAY = 5000; // ms
+      let autoPlayTimer = null;
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    document.querySelector('.navbar-nav').classList.remove('active');
-                }
-            });
-        });
+      function updateSlidesToShow() {
+        const w = window.innerWidth;
+        if (w <= 768) slidesToShow = 1;
+        else if (w <= 1024) slidesToShow = 2;
+        else slidesToShow = 4;
+      }
 
-        // Update active nav link on scroll
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if(pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+      // internal slide mover (avoids clobbering the global name)
+      function _moveSlide(direction, userInitiated = false) {
+        updateSlidesToShow();
+        currentSlide += direction;
+        const maxStart = Math.max(0, slides.length - slidesToShow);
+        if (currentSlide > maxStart) {
+          currentSlide = 0;
+        }
+        if (currentSlide < 0) {
+          currentSlide = maxStart;
+        }
+        updateCarousel();
+
+        // If user clicked navigation, restart autoplay to give them time
+        if (userInitiated) restartAutoplay();
+      }
+
+      function updateCarousel() {
+        const slideWidth = 100 / slidesToShow; // percent
+        track.style.transform = `translateX(${-currentSlide * slideWidth}%)`;
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoPlayTimer = setInterval(() => _moveSlide(1), AUTO_PLAY_DELAY);
+      }
+
+      function stopAutoplay() {
+        if (autoPlayTimer) {
+          clearInterval(autoPlayTimer);
+          autoPlayTimer = null;
+        }
+      }
+
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      // Pause on hover
+      const carouselWrapper = document.querySelector('.carousel-wrapper');
+      if (carouselWrapper) {
+        carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+        carouselWrapper.addEventListener('mouseleave', startAutoplay);
+      }
+
+      // Expose a safe global wrapper used by inline onclicks
+      window.moveSlide = function (direction) {
+        _moveSlide(direction, true);
+      };
+
+      // Initialize
+      function initCarousel() {
+        updateSlidesToShow();
+        updateCarousel();
+        startAutoplay();
+      }
+
+      window.addEventListener('resize', () => {
+        const prevSlidesToShow = slidesToShow;
+        updateSlidesToShow();
+        // If number of visible slides changed we may need to adjust currentSlide
+        if (prevSlidesToShow !== slidesToShow) {
+          currentSlide = Math.min(currentSlide, Math.max(0, slides.length - slidesToShow));
+          updateCarousel();
+        }
+      });
+
+      // Touch support: basic swipe
+      (function addTouchSupport() {
+        let startX = 0;
+        let endX = 0;
+        carouselWrapper &&
+          carouselWrapper.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            stopAutoplay();
+          });
+        carouselWrapper &&
+          carouselWrapper.addEventListener('touchmove', (e) => {
+            endX = e.touches[0].clientX;
+          });
+        carouselWrapper &&
+          carouselWrapper.addEventListener('touchend', () => {
+            const dx = endX - startX;
+            if (Math.abs(dx) > 40) {
+              _moveSlide(dx < 0 ? 1 : -1, true);
+            }
+            restartAutoplay();
+          });
+      })();
+
+      // Start immediately if DOM already loaded, otherwise wait for event
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCarousel);
+      } else {
+        initCarousel();
+      }
     </script>
-</body>
+
+    <script>
+      // Update tanggal dan hari secara dinamis
+      function updateDateTime() {
+        const days = ['MINGGU,', 'SENIN,', 'SELASA,', 'RABU,', 'KAMIS,', 'JUMAT,', 'SABTU,'];
+        const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        const now = new Date();
+        const dayName = days[now.getDay()];
+        const date = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const dateStr = date + ' ' + month + ' ' + year;
+
+        const dayElement = document.querySelector('.day-name');
+        const dateElement = document.querySelector('.date-info');
+        if (dayElement) dayElement.textContent = dayName;
+        if (dateElement) dateElement.textContent = dateStr;
+      }
+
+      // Update immediately on load
+      updateDateTime();
+
+      // Update setiap hari (opsional: update setiap jam)
+      setInterval(updateDateTime, 3600000); // update setiap 1 jam
+    </script>
+
+    <script>
+      const searchToggleBtn = document.getElementById('searchToggleBtn');
+      const searchOverlay = document.getElementById('searchOverlay');
+      const searchInput = document.getElementById('searchInput');
+      const searchResults = document.getElementById('searchResults');
+      const searchSubmitBtn = document.getElementById('searchSubmitBtn');
+      const closeSearchBtn = document.getElementById('closeSearchBtn');
+
+      const searchItems = [
+        { title: 'Home', description: 'Halaman utama SMKN 5 MALANG', url: 'index.html', keywords: ['home', 'beranda', 'dashboard'] },
+        { title: 'Profil - Sejarah Sekolah', description: 'Informasi sejarah sekolah', url: 'profil.html#sejarah', keywords: ['profil', 'sejarah', 'sekolah'] },
+        { title: 'Profil - Visi & Misi', description: 'Informasi visi dan misi sekolah', url: 'profil.html#visi-misi', keywords: ['visi', 'misi', 'visi & misi'] },
+        { title: 'Profil - Struktur Organisasi', description: 'Struktur organisasi sekolah', url: 'profil.html#struktur', keywords: ['struktur', 'organisasi'] },
+        { title: 'Profil - Fasilitas', description: 'Informasi fasilitas sekolah', url: 'profil.html#fasilitas', keywords: ['fasilitas'] },
+        { title: 'Informasi - Berita Terbaru', description: 'Berita terbaru tentang sekolah', url: 'informasi.html#berita', keywords: ['berita', 'terbaru'] },
+        { title: 'Informasi - Agenda', description: 'Agenda kegiatan sekolah', url: 'informasi.html#agenda', keywords: ['agenda'] },
+        { title: 'Informasi - Galeri', description: 'Galeri foto dan kegiatan', url: 'informasi.html#galeri', keywords: ['galeri', 'foto'] },
+        { title: 'Kontak Kami', description: 'Halaman kontak sekolah', url: 'kontak-kami.html', keywords: ['kontak', 'telepon', 'email'] },
+        { title: 'Program Kemitraan', description: 'Program kemitraan TEFA', url: 'tefa.html#partnership', keywords: ['kemitraan', 'partnership'] },
+        { title: 'Pelatihan Industri', description: 'Program pelatihan industri TEFA', url: 'tefa.html#pelatihan', keywords: ['pelatihan', 'industri'] },
+        { title: 'Alumni', description: 'Informasi alumni sekolah', url: 'alumni.html', keywords: ['alumni'] },
+        { title: 'Kriya Kayu', description: 'Jurusan Kriya Kayu', url: 'kriya-kayu.html', keywords: ['kriya kayu', 'kayu'] },
+        { title: 'Kriya Keramik', description: 'Jurusan Kriya Keramik', url: 'kriya-keramik.html', keywords: ['kriya keramik', 'keramik'] },
+        { title: 'Kriya Tekstil', description: 'Jurusan Kriya Tekstil', url: 'kriya-tekstil.html', keywords: ['kriya tekstil', 'tekstil'] },
+        { title: 'Tata Busana', description: 'Jurusan Tata Busana', url: 'tata-busana.html', keywords: ['tata busana', 'busana'] },
+        { title: 'Animasi', description: 'Jurusan Animasi', url: 'animasi.html', keywords: ['animasi'] },
+        { title: 'RPL', description: 'Jurusan Rekayasa Perangkat Lunak', url: 'rpl.html', keywords: ['rpl', 'rekayasa perangkat lunak'] },
+        { title: 'TKJ', description: 'Jurusan Teknik Komputer Jaringan', url: 'tkj.html', keywords: ['tkj', 'jaringan'] },
+        { title: 'DKV', description: 'Jurusan Desain Komunikasi Visual', url: 'dkv.html', keywords: ['dkv', 'desain', 'komunikasi visual'] },
+      ];
+
+      function openSearch() {
+        if (!searchOverlay) return;
+        searchOverlay.classList.remove('hidden');
+        searchOverlay.setAttribute('aria-hidden', 'false');
+        searchInput.value = '';
+        searchResults.innerHTML = '<p class="search-no-results">Silakan ketik kata kunci untuk mencari...</p>';
+        searchInput.focus();
+      }
+
+      function closeSearch() {
+        if (!searchOverlay) return;
+        searchOverlay.classList.add('hidden');
+        searchOverlay.setAttribute('aria-hidden', 'true');
+      }
+
+      function createResultItem(item) {
+        const result = document.createElement('div');
+        result.className = 'search-result-item';
+        result.tabIndex = 0;
+        result.innerHTML = `
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+        `;
+        result.addEventListener('click', () => {
+          window.location.href = item.url;
+        });
+        result.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            window.location.href = item.url;
+          }
+        });
+        return result;
+      }
+
+      function performSearch(query) {
+        if (!searchResults) return;
+        const normalized = (query || '').trim().toLowerCase();
+        if (!normalized) {
+          searchResults.innerHTML = '<p class="search-no-results">Mohon masukkan kata kunci pencarian.</p>';
+          return;
+        }
+
+        const matches = searchItems.filter((item) => {
+          const text = `${item.title} ${item.description}`.toLowerCase();
+          const inText = text.includes(normalized);
+          const inKeywords = item.keywords.some((keyword) => keyword.includes(normalized) || normalized.includes(keyword));
+          return inText || inKeywords;
+        });
+
+        if (matches.length === 0) {
+          searchResults.innerHTML = `<p class="search-no-results">Tidak ditemukan hasil untuk "${query}".</p>`;
+          return;
+        }
+
+        searchResults.innerHTML = '';
+        matches.forEach((item) => {
+          searchResults.appendChild(createResultItem(item));
+        });
+      }
+
+      if (searchToggleBtn) {
+        searchToggleBtn.addEventListener('click', openSearch);
+      }
+
+      if (searchSubmitBtn) {
+        searchSubmitBtn.addEventListener('click', () => performSearch(searchInput.value));
+      }
+
+      if (closeSearchBtn) {
+        closeSearchBtn.addEventListener('click', closeSearch);
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            performSearch(searchInput.value);
+          }
+          if (event.key === 'Escape') {
+            closeSearch();
+          }
+        });
+      }
+
+      if (searchOverlay) {
+        searchOverlay.addEventListener('click', (event) => {
+          if (event.target === searchOverlay) {
+            closeSearch();
+          }
+        });
+      }
+    </script>
+  </body>
 </html>
